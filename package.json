@@ -1,0 +1,33 @@
+{
+  "name": "nodess",
+  "version": "1.0.1",
+  "description": "node socket server",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "joi": "^14.3.1",
+    "jquery": "^3.5.1",
+    "jshint": "^2.11.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.3",
+    "socket.io": "^2.3.0",
+    "to": "^0.2.9",
+    "update": "^0.7.4",
+    "uuid": "^8.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/elvisAR-git/NodeSS.git"
+  },
+  "keywords": [
+    "nodess"
+  ],
+  "author": "Elvis Moraa",
+  "license": "MIT"
+}
