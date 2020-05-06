@@ -47,6 +47,14 @@ app.post("/create", (req, res) =>
 
 })
 
+var SYSTEM_CHECK = "OK AND RUNNING"
+
+app.get("/", (req, res) =>
+{
+    res.status(200)
+    res.send("<b style='font-size:30px; color:green;'>ARnet Chat Server</b> <hr> v1.0.1 <br>SYSTEM CHECK -->[<b>" + SYSTEM_CHECK + "</b>]<hr> <p style='font-family: mono; color: red; text-decoration: underline dotted 2px green;'>Built with node.js and Socket.io</p>")
+})
+
 
 var PORT = 5000 || process.env.PORT
 
@@ -250,17 +258,24 @@ io.sockets.on('connect', (socket) =>
         console.log("Profile fetch---->", email)
         Db.get(MyDB, "Users", `"${email}"`, "email").then((result) =>
         {
-            connected.forEach(session =>
+            if (result)
             {
-                if (session.UID == result.UID)
+                connected.forEach(session =>
                 {
-                    // online
-                    result.online = "true"
-                    result.sock_id = session.sock
-                }
-            });
-            console.log(connected)
-            socket.emit('profile', result)
+                    if (session.UID == result.UID)
+                    {
+                        // online
+                        result.online = "true"
+                        result.sock_id = session.sock
+                    }
+                });
+                console.log(connected)
+                socket.emit('profile', result)
+            } else
+            {
+                console.log("FETCH ERROR:", email)
+                socket.emit("Erorr", "User is not registered to chat server")
+            }
         }).catch((err) =>
         {
             console.log(err)
