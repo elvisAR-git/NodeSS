@@ -48,10 +48,10 @@ app.post("/create", (req, res) =>
 })
 
 
+var PORT = 5000 || process.env.PORT
 
-
-server.listen(3000, "192.168.100.35");
-console.log("Server Running")
+server.listen(PORT, "localhost");
+console.log("Server Running @", PORT)
 
 var alive = []
 

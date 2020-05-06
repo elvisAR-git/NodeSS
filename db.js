@@ -8,16 +8,18 @@ function connectToDatabase(databaseName)
         var database = mysql.createConnection(
             {
                 host: "localhost",
-                user: "elvis",
-                password: "moraaelvis",
+                user: "root",
+                password: "MoraaElvis@CoffeeAfrica1",
                 database: databaseName,
                 charset: 'utf8mb4',              //correct charset for emojis
                 collation: 'utf8mb4_unicode_ci',
             }, (err) =>
         {
+            console.log("[!] Database connection to", databaseName, "failed", err)
             if (err) reject(err)
         }
         )
+        console.log("[+] Database connection to", databaseName, "was successfull")
         resolve(database)
 
     })
