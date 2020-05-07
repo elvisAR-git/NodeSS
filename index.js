@@ -1,6 +1,7 @@
 const express = require('express')
 const validate = require('./validators.js').validate
 var Db = require('./db.js')
+var createLog = require('./logger.js').createLog
 
 let MyDB
 
@@ -34,9 +35,12 @@ app.post("/create", (req, res) =>
 
         Db.push(MyDB, "Users", user).then((result) =>
         {
+            createLog("ACCOUNT CREATION", "Successfully created user profile for " + user.username)
             res.status(201).send("Successfully created user profile for " + user.username)
         }).catch((err) =>
         {
+            console.log("[!]ACCOUNT CREATION ERROR OCCURRED CHECK LOG FOR DETAILS")
+            createLog("ACCOUNT CREATION", "!FAILED" + JSON.stringify(err))
             res.status(500).send(err)
         })
     } else
@@ -58,7 +62,7 @@ app.get("/", (req, res) =>
 
 var PORT = 5000 || process.env.PORT
 
-server.listen(PORT, "localhost");
+server.listen(PORT, "192.168.100.35");
 console.log("Server Running @", PORT)
 
 var alive = []
@@ -122,6 +126,10 @@ io.sockets.on('connect', (socket) =>
 
                     }
                 });
+            }).catch((err) =>
+            {
+                console.log("DB_SQL ERROR:", err.sqlMessage)
+                socket.emit("Error", "Could not establish a connection")
             })
         }
 
@@ -278,7 +286,7 @@ io.sockets.on('connect', (socket) =>
             }
         }).catch((err) =>
         {
-            console.log(err)
+            console.log("ACCESS DENIED")
         })
     })
 

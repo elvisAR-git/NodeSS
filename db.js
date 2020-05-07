@@ -1,5 +1,10 @@
 const mysql = require('mysql')
 
+var HOST = "localhost" //or ip address
+var USER = "elvis"
+var PASSWORD_TXT = "moraaelvis"
+
+//MoraaElvis@CoffeeAfrica1
 
 function connectToDatabase(databaseName)
 {
@@ -7,19 +12,17 @@ function connectToDatabase(databaseName)
     {
         var database = mysql.createConnection(
             {
-                host: "localhost",
-                user: "root",
-                password: "MoraaElvis@CoffeeAfrica1",
+                host: HOST,
+                user: USER,
+                password: PASSWORD_TXT,
                 database: databaseName,
                 charset: 'utf8mb4',              //correct charset for emojis
                 collation: 'utf8mb4_unicode_ci',
             }, (err) =>
         {
-            console.log("[!] Database connection to", databaseName, "failed", err)
             if (err) reject(err)
         }
         )
-        console.log("[+] Database connection to", databaseName, "was successfull")
         resolve(database)
 
     })

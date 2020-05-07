@@ -1,0 +1,13 @@
+
+                [ACCOUNT CREATION]---[Thu, 07 May 2020 05:22:28 GMT---[!FAILED{"code":"ECONNREFUSED","errno":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":3306,"fatal":true}]]
+            
+                [ACCOUNT CREATION]---[Thu, 07 May 2020 05:23:04 GMT---[!FAILED{"code":"ECONNREFUSED","errno":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":3306,"fatal":true}]]
+            
+                [ACCOUNT CREATION]---[Thu, 07 May 2020 05:24:18 GMT---[!FAILED{"code":"ECONNREFUSED","errno":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":3306,"fatal":true}]]
+            
+                [ACCOUNT CREATION]---[Thu, 07 May 2020 05:25:24 GMT---[!FAILED{"code":"ER_DUP_ENTRY","errno":1062,"sqlMessage":"Duplicate entry 'elvismoraa@gmail.com' for key 'email'","sqlState":"23000","index":0,"sql":"INSERT INTO Users SET `username` = 'elvis Mor', `email` = 'elvismoraa@gmail.com', `password` = 'moraaelvis'"}]]
+            
+                [ACCOUNT CREATION]---[Thu, 07 May 2020 05:26:01 GMT---[Successfully created user profile for elvis Mor]]
+            
+                [ACCOUNT CREATION]---[Thu, 07 May 2020 05:26:14 GMT---[!FAILED{"code":"ER_DUP_ENTRY","errno":1062,"sqlMessage":"Duplicate entry 'elvismraa@gmail.com' for key 'email'","sqlState":"23000","index":0,"sql":"INSERT INTO Users SET `username` = 'elvis Mor', `email` = 'elvismraa@gmail.com', `password` = 'moraaelvis'"}]]
+            
