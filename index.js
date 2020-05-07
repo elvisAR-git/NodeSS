@@ -62,7 +62,7 @@ app.get("", (req, res) =>
 
 var PORT = 5000 || process.env.PORT
 
-server.listen(PORT, "localhost");
+server.listen(PORT, "192.168.100.35");
 console.log("Server Running @", PORT)
 
 var alive = []
