@@ -2,7 +2,7 @@ const mysql = require('mysql')
 
 var HOST = "localhost" //or ip address
 var USER = "elvis"
-var PASSWORD_TXT = "moraaelvis"
+var PASSWORD_TXT = "MoraaElvis@CoffeeAfrica1"
 
 //MoraaElvis@CoffeeAfrica1
 
