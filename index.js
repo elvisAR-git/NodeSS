@@ -25,7 +25,7 @@ var connections = []
 
 // Http common
 
-app.post("/create", (req, res) =>
+app.post("/io/create", (req, res) =>
 {
     var user = req.body
     var check = validate(user)
@@ -53,7 +53,7 @@ app.post("/create", (req, res) =>
 
 var SYSTEM_CHECK = "OK AND RUNNING"
 
-app.get("", (req, res) =>
+app.get("io", (req, res) =>
 {
     res.status(200)
     res.send("<b style='font-size:30px; color:green;'>ARnet Chat Server</b> <hr> v1.0.1 <br>SYSTEM CHECK -->[<b>" + SYSTEM_CHECK + "</b>]<hr> <p style='font-family: mono; color: red; text-decoration: underline dotted 2px green;'>Built with node.js and Socket.io</p>")
