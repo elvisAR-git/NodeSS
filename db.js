@@ -2,27 +2,22 @@ const mysql = require('mysql')
 
 var HOST = "localhost" //or ip address
 var USER = "root"
-var PASSWORD_TXT = "MoraaElvis@CoffeeAfrica1"
+var PASSWORD_TXT = ""
 
 //MoraaElvis@CoffeeAfrica1
 
-function connectToDatabase(databaseName)
-{
-    return new Promise((resolve, reject) =>
-    {
-        var database = mysql.createConnection(
-            {
-                host: HOST,
-                user: USER,
-                password: PASSWORD_TXT,
-                database: databaseName,
-                charset: 'utf8mb4',              //correct charset for emojis
-                collation: 'utf8mb4_unicode_ci',
-            }, (err) =>
-        {
+function connectToDatabase(databaseName) {
+    return new Promise((resolve, reject) => {
+        var database = mysql.createConnection({
+            host: HOST,
+            user: USER,
+            password: PASSWORD_TXT,
+            database: databaseName,
+            charset: 'utf8mb4', //correct charset for emojis
+            collation: 'utf8mb4_unicode_ci',
+        }, (err) => {
             if (err) reject(err)
-        }
-        )
+        })
         resolve(database)
 
     })
@@ -30,31 +25,25 @@ function connectToDatabase(databaseName)
 
 
 
-function getCollection(database, table, limit = 0)
-{
+function getCollection(database, table, limit = 0) {
     if (limit == 0) limit = "*"
     limit = limit.toString()
 
     var query = `SELECT ${limit} FROM ${table}`
 
-    return new Promise((resolve, reject) =>
-    {
+    return new Promise((resolve, reject) => {
         // running query
-        database.query(query, (err, result, fields) =>
-        {
+        database.query(query, (err, result, fields) => {
             if (err) reject(err)
             resolve(result)
         })
     })
 }
 
-function Insert(database, table, data = {})
-{
-    return new Promise((resolve, reject) =>
-    {
+function Insert(database, table, data = {}) {
+    return new Promise((resolve, reject) => {
         var sql = "INSERT INTO " + table + " SET ?";
-        database.query(sql, data, (err, result) =>
-        {
+        database.query(sql, data, (err, result) => {
             if (err) reject(err)
             resolve(result)
         })
@@ -63,20 +52,15 @@ function Insert(database, table, data = {})
 }
 
 
-function FetchViaId(database, table, id, alias = undefined)
-{
+function FetchViaId(database, table, id, alias = undefined) {
     var sql = ""
-    if (!alias)
-    {
+    if (!alias) {
         sql = "SELECT * FROM " + table + " WHERE id=" + id
-    } else
-    {
+    } else {
         sql = "SELECT * FROM " + table + " WHERE " + alias + "=" + id
     }
-    return new Promise((resolve, reject) =>
-    {
-        database.query(sql, (err, result) =>
-        {
+    return new Promise((resolve, reject) => {
+        database.query(sql, (err, result) => {
             if (err) reject(err)
             resolve(result[0])
         })
@@ -84,27 +68,21 @@ function FetchViaId(database, table, id, alias = undefined)
 }
 
 
-function Delete(database, table, column, condition)
-{
+function Delete(database, table, column, condition) {
     var sql = `DELETE FROM ${table} WHERE ${column}${condition}`
-    return new Promise((resolve, reject) =>
-    {
-        database.query(sql, (err, result) =>
-        {
+    return new Promise((resolve, reject) => {
+        database.query(sql, (err, result) => {
             if (err) reject(err)
             resolve(result)
         })
     })
 }
 
-function Filter(database, table, constraint)
-{
+function Filter(database, table, constraint) {
     // constraint is an evaluated string e.g id=5
     var sql = `SELECT * FROM ${table} WHERE ${constraint}`
-    return new Promise((resolve, reject) =>
-    {
-        database.query(sql, (err, result) =>
-        {
+    return new Promise((resolve, reject) => {
+        database.query(sql, (err, result) => {
             if (err) reject(err)
             resolve(result)
 
@@ -114,35 +92,28 @@ function Filter(database, table, constraint)
 
 
 module.exports = {
-    connect: async (databaseName) =>
-    {
+    connect: async (databaseName) => {
         let database = await connectToDatabase(databaseName)
         return database
     },
-    fetch: async (database, table, limit) =>
-    {
+    fetch: async (database, table, limit) => {
         let result = await getCollection(database, table, limit)
         return result
     },
-    push: async (database, table, data = {}) =>
-    {
+    push: async (database, table, data = {}) => {
         let result = await Insert(database, table, data)
         return result
     },
-    get: async (database, table, id, alias) =>
-    {
+    get: async (database, table, id, alias) => {
         let result = await FetchViaId(database, table, id, alias)
         return result
     },
-    filter: async (database, table, constraint) =>
-    {
+    filter: async (database, table, constraint) => {
         let result = await Filter(database, table, constraint)
         return result
     },
-    delete: async (database, table, column, condition) =>
-    {
+    delete: async (database, table, column, condition) => {
         let result = await Delete(database, table, column, condition)
         return result
     }
 }
-

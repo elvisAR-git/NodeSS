@@ -18,8 +18,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "test": "nodemon index.js && echo Running in developent mode",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

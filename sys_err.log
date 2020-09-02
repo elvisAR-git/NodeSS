@@ -11,3 +11,19 @@
             
                 [ACCOUNT CREATION]---[Thu, 07 May 2020 05:26:14 GMT---[!FAILED{"code":"ER_DUP_ENTRY","errno":1062,"sqlMessage":"Duplicate entry 'elvismraa@gmail.com' for key 'email'","sqlState":"23000","index":0,"sql":"INSERT INTO Users SET `username` = 'elvis Mor', `email` = 'elvismraa@gmail.com', `password` = 'moraaelvis'"}]]
             
+                [ACCOUNT CREATION]---[Fri, 22 May 2020 05:37:02 GMT---[!FAILED{"code":"ER_ACCESS_DENIED_ERROR","errno":1045,"sqlMessage":"Access denied for user 'root'@'localhost' (using password: YES)","sqlState":"28000","fatal":true}]]
+            
+                [ACCOUNT CREATION]---[Fri, 22 May 2020 05:37:23 GMT---[!FAILED{"code":"ER_NO_SUCH_TABLE","errno":1146,"sqlMessage":"Table 'ARDB.Users' doesn't exist","sqlState":"42S02","index":0,"sql":"INSERT INTO Users SET `email` = 'alanray459@gmail.com', `username` = 'Elvis Moraa', `password` = 'moraaelvis'"}]]
+            
+                [ACCOUNT CREATION]---[Fri, 22 May 2020 05:42:38 GMT---[Successfully created user profile for Elvis Moraa]]
+            
+                [ACCOUNT CREATION]---[Fri, 22 May 2020 05:54:24 GMT---[Successfully created user profile for Elvis Moraa]]
+            
+                [ACCOUNT CREATION]---[Fri, 22 May 2020 05:54:28 GMT---[!FAILED{"code":"ER_DUP_ENTRY","errno":1062,"sqlMessage":"Duplicate entry 'alanray459@gmail.com' for key 'email'","sqlState":"23000","index":0,"sql":"INSERT INTO Users SET `email` = 'alanray459@gmail.com', `username` = 'Elvis Moraa', `password` = 'moraaelvis'"}]]
+            
+                [ACCOUNT CREATION]---[Fri, 22 May 2020 06:12:58 GMT---[!FAILED{"code":"ER_DUP_ENTRY","errno":1062,"sqlMessage":"Duplicate entry 'alanray459@gmail.com' for key 'email'","sqlState":"23000","index":0,"sql":"INSERT INTO Users SET `email` = 'alanray459@gmail.com', `username` = 'Elvis Moraa', `password` = 'moraaelvis'"}]]
+            
+                [ACCOUNT CREATION]---[Fri, 22 May 2020 09:03:10 GMT---[!FAILED{"errno":"ECONNREFUSED","code":"ECONNREFUSED","syscall":"connect","address":"127.0.0.1","port":3306,"fatal":true}]]
+            
+                [ACCOUNT CREATION]---[Sun, 21 Jun 2020 09:25:14 GMT---[Successfully created user profile for Hosea]]
+            
